@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/armana', function () {
     return view('welcome');
 });
+Route::get('/hello',function(){
+	return view('firstpage');
+});
+// Route::get('/second',function(){
+// 	return view('secondpage');
+// });
+Route::get('/second','App\Http\Controllers\myController@index');
