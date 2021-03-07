@@ -22,4 +22,6 @@ Route::get('/hello',function(){
 // Route::get('/second',function(){
 // 	return view('secondpage');
 // });
+// to show addproduct form
 Route::get('/second','App\Http\Controllers\myController@index');
+Route::get('/addproduct','App\Http\Controllers\myController@showproductform'); //page dekhauna ko lagi get nai hunxa
