@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Product;
 class myController extends Controller
 {
     /**
@@ -32,7 +32,21 @@ class myController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image=null;
+        if($request->hasfile('image')){
+            $file=$request->file('image');
+            $image=mt_rand(10001,999999999).'_'.$file->getClientOriginalName();
+            $file->move('uploads/products/',$image);
+        }
+        Product::create([
+            'product_name'=>$request->get('pname'),
+            'product_price'=>$request->get('price'),
+            'product_quantity'=>$request->get('quantity'),
+            'product_description'=>$request->get('description'),
+            'product_image'=>$image
+        ]);
+        $request->session()->flash('msg','product has been added successfully');
+        return redirect()->back();
     }
 
     /**
