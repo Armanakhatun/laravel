@@ -35,3 +35,5 @@ Route::get('/homepage','App\Http\Controllers\myController@homepage')->name('home
 Route::get('/deletedata/{id}','App\Http\Controllers\myController@destroy')->name('delete');
 //to edit product
 Route::get('/editdata/{id}','App\Http\Controllers\myController@edit')->name('editproduct');
+//to update product
+Route::post('/updatedata/{id}','App\Http\Controllers\myController@update')->name('updateproduct');
